@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .weather-icon {
+            width: 100px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+    <form method="get">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather_data.error %}
+        <p class="error">{{ weather_data.error }}</p>
+    {% elif weather_data.city %}
+        <h2>Weather in {{ weather_data.city }}</h2>
+        <p>Temperature: {{ weather_data.temperature }}°C</p>
+        <p>Humidity: {{ weather_data.humidity }}%</p>
+        <p>Description: {{ weather_data.description }}</p>
+    {% endif %}
+</body>
+</html>
